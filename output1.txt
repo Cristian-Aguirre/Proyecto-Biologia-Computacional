@@ -1,3 +1,5 @@
+Alineamientos con el nucleotido del Epipedobates anthonyi con la base de datos de BLAST
+
 
 ****Alineamiento****
 secuencia: gi|1562070919|gb|MK278734.1| Epipedobates boulengeri voucher GECOH691 from Colombia NaV1.4 alpha subunit (SCN4A) gene, partial cds

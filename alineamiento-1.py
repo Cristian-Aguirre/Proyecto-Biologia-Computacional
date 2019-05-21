@@ -5,9 +5,15 @@ from Bio.Blast import NCBIXML
 from Bio import SeqIO
 import sys
 
-output_filename = "output.txt"
-f = open(output_filename,'w')
+output_filename_1 = "output1.txt"
+output_filename_2 = "output2.txt"
+
+f = open(output_filename_1,'w')
+g = open(output_filename_2,'w')
+
 sys.oudout = f
+sys.oudout = g
+
 epipedobates_anthonyi = SeqIO.read("epipedobates-anthonyi-parcial.fasta", "fasta")
 print("\n----Descripcion del gen Epipedobates anthonyi----")
 print(epipedobates_anthonyi)
@@ -34,7 +40,7 @@ blast_records = NCBIXML.parse(result_handle)
 dir(blast_records)
 print(blast_records.__sizeof__)
 
-print("Alineamientos con el nucleotido del Epipedobates anthonyi con la base de datos de BLAST\n")
+print("Alineamientos con el nucleotido del Epipedobates Anthonyi con la base de datos de BLAST\n", file=f)
 for b in blast_records:
     for alignment in b.alignments:
         for hsp in alignment.hsps:
@@ -45,3 +51,23 @@ for b in blast_records:
             print(hsp.query[0:100] + '...', file=f)
             print(hsp.match[0:100] + '...', file=f)
             print(hsp.sbjct[0:100] + '...', file=f)
+
+
+result_handle= NCBIWWW.qblast("blastn", "nt",epipedobates_boulengei.seq)
+print(result_handle)
+
+blast_records = NCBIXML.parse(result_handle)
+dir(blast_records)
+print(blast_records.__sizeof__)
+
+print("Alineamientos con el nucleotido del Epipedobates Boulengei con la base de datos de BLAST\n", file=g)
+for b in blast_records:
+    for alignment in b.alignments:
+        for hsp in alignment.hsps:
+            print('\n****Alineamiento****', file=g)
+            print('secuencia:', alignment.title, file=g)
+            print('longitud:', alignment.length, file=g)
+            print('e value:', hsp.expect, file=g)
+            print(hsp.query[0:100] + '...', file=g)
+            print(hsp.match[0:100] + '...', file=g)
+            print(hsp.sbjct[0:100] + '...', file=g)
