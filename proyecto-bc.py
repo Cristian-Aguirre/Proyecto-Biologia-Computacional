@@ -33,19 +33,19 @@ seq.write(records,"Conjunto_fasta.fasta", "fasta")
 
 aligment=align.read(open("Conjunto_fasta.aln"), "clustal")
 
-print(aligment[:, :44])
+print(aligment)
 
 class Prueba(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self.title="Prueba Compiladores"
-        self.top=200
-        self.left=200
-        self.width=680
-        self.height=600
+        self.title="Proyecto Biologia Computacional"
+        self.top=0
+        self.left=0
+        self.width=1200
+        self.height=700
         #self.setWindowIcon(QtGui.QIcon(icon))
-        button1 = QPushButton("Comprobar", self)
+        button1 = QPushButton("ALINEAR!", self)
         button1.move(300,400)
         button1.setToolTip("<h4>Comprobar sintaxis</h4>")
         button1.clicked.connect(self.onClick1)
@@ -54,12 +54,10 @@ class Prueba(QMainWindow):
 
 
     def InitWindow(self):
-        self.label1 = QLabel("Ingrese el input :", self)
-        self.label1.move(100,165)
 
         self.label2 = QLabel(self)
-        self.label2.setPixmap(QPixmap('logo_uni.png'))
-        self.label2.setGeometry(0,0,250,200)
+        self.label2.setPixmap(QPixmap('images/epipedobates_anthonyi.jpg'))
+        self.label2.setGeometry(50,50,250,200)
 
         nuevaentrada = QAction(QIcon('new_icon.png'), 'Nuevo', self)
         nuevaentrada.setShortcut('Ctrl+E')
@@ -99,15 +97,9 @@ class Prueba(QMainWindow):
 
     def onClick2(self):
        print("Hola2")
-	
+
 App = QApplication(sys.argv)
 window = Prueba()
 
 
 sys.exit(App.exec())
-
-
-
-
-
-
